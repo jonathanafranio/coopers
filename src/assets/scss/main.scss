@@ -1,0 +1,17 @@
+//Reset
+@import 'reset/_imports';
+@import 'reset/_variables';
+@import 'reset/_normalize';
+@import 'reset/_grid';
+
+//Elements
+@import 'elements/_content';
+
+//Header
+@import 'header/_header';
+
+// Agrupa todos os blocos do projeto
+@import 'blocks/_page-section';
+
+//Footer
+@import 'footer/_footer';
