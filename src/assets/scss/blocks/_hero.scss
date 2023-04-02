@@ -1,0 +1,135 @@
+.hero {
+    display: flex;
+    width: 100vw;
+    margin-top: 24px;
+    position: relative;
+    @media screen and (max-width: 1023px) {
+        flex-direction: column;
+    }
+    @media screen and (min-width: 1024px) {
+        justify-content: space-between;
+        align-items: center;
+        height: 734px;
+    }
+
+    &__txt {
+        @media screen and (max-width: 1023px) {
+            margin-top: 50px;
+            padding: 0 15px;
+        }
+        @media screen and (min-width: 1024px) {
+            margin-left: 80px;
+        }
+    }
+
+    &__title {
+        font-family: $second-font;
+        font-weight: 400;
+        color: $green;
+
+        @media screen and (max-width: 1023px) {
+            font-size: 4rem;
+            line-height: 4.5rem;
+        }
+
+        @media screen and (min-width: 1024px) {
+            font-size: 6rem;
+            line-height: 6.4rem;
+        }
+
+        strong {
+            font-weight: 700;
+            color: #000;
+        }
+    }
+
+    &__p {
+        font-family: $second-font;
+        font-weight: 600;
+        color: #000;
+        @media screen and (max-width: 1023px) {
+            font-size: 1.6rem;
+        }
+        @media screen and (min-width: 1024px) {
+            font-size: 2.4rem;
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 64px;
+        width: 100%;
+        font-family: $second-font;
+        font-weight: 600;
+        font-size: 2.4rem;
+        color: #fff;
+        
+        background-color: $green;
+        border-radius: 10px;
+        transition: background-color 0.7s ease-in-out;
+        will-change: background-color;
+        
+        @media screen and (min-width: 1024px) {
+            max-width: 300px;
+        }
+
+        &:hover {
+            background-color: #000;
+        }
+    }
+
+    &__fig {
+        display: flex;
+        align-items: center;
+        
+        background-image: url(../../img/bg.png);
+        background-repeat: no-repeat;
+        background-position: right;
+        margin: 0;
+
+        @media screen and (max-width: 1023px) {
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 520px) {
+            background-size: 300px auto;
+            padding: 15px;
+        }
+
+        @media screen and (max-width: 1023px) and (min-width: 521px) {
+            width: 100%;
+            height: 100vh;
+            max-height: 734px;
+        }
+        @media screen and (min-width: 1024px) {
+            justify-content: right;
+            width: 640px;
+            height: 100%;
+            padding-right: 80px;
+        }
+    }
+
+    &__arrow-down {
+        width: 25px;
+        color: #979797;
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: moveDown 1.5s infinite;
+    }
+}
+
+@keyframes moveDown {
+    0% {
+        bottom: 30px;
+    }
+    50% {
+        bottom: 50px;
+    }
+    100% {
+        bottom: 30px;
+    }
+}

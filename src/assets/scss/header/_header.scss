@@ -1,2 +1,37 @@
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 9;
+
+    @media screen and (max-width: 1023px) {
+        padding: 15px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        padding: 54px 80px 55px;
+    }
+
+    &__logo {
+        @media screen and (max-width: 1023px) {
+            width: 125px;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        height: 40px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 2.1rem;
+        color: #fff;
+        background-color: #000;
+        border: none;
+    }
 }

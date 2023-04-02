@@ -4,11 +4,11 @@
 
 html {
 	font-size: 62.5%;
+	scroll-behavior: smooth;
 }
 
 body {
 	margin: 0;
-	padding-top: 70px;
     font-size: 1.6rem;
 	font-family: $main-font;
 	color: $text-color;
@@ -223,7 +223,6 @@ a {
 	&:hover,
 	&:focus,
 	&:active {
-		color: $text-color;
-		outline: 0 !important;
+		outline: 0;
 	}
 }
