@@ -3,6 +3,7 @@ import Layouts from '@/components/Layouts/Layouts'
 import Hero from '@/components/Hero'
 import imageBanner from "../assets/img/hero.jpg"
 import SectionToDo from '@/components/SectionToDo'
+import FormMsg from '@/components/FormMsg'
 
 
 export default function Home() {
@@ -21,7 +22,9 @@ export default function Home() {
                     link_url="#to-do"
                     link_text="Go to To-do list" />
 
-                <SectionToDo></SectionToDo>
+                <SectionToDo />
+
+                <FormMsg />
             </Layouts>
         </>
     )

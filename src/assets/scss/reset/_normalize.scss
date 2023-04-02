@@ -117,11 +117,16 @@ input {
 	&[type="search"],
 	&[type="number"],
 	&[type="tel"] {
+		padding: 15px;
+		font-family: $second-font;
 		font-size: 1.6rem;
 		font-weight: 400;
+		line-height: 2rem;
 		color: $dark-text;
-		border: 1px solid #909090;
-		background: $light-main;
+		border: 1px solid #000;
+		background: #fff;
+		border-radius: 4px;
+		@include placeholder-form(#9a9a9a, $second-font, 400);
 		&:focus {
 			border-color: $main-color;
 		}
@@ -130,6 +135,24 @@ input {
 	&[disabled] {
 		border-color: transparent;
 		background: transparent;
+	}
+}
+
+textarea {
+	padding: 15px;
+	height: 150px;
+	font-family: $second-font;
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 2rem;
+	color: $dark-text;
+	border: 1px solid #000;
+	background: #fff;
+	border-radius: 4px;
+	resize: none;
+	@include placeholder-form(#9a9a9a, $second-font, 400);
+	&:focus {
+		border-color: $main-color;
 	}
 }
 
@@ -169,8 +192,7 @@ h3 {
 
 button,
 input,
-select,
-textarea {
+select {
 	color: $main-color;
 	font-size: 1.6rem;
 	line-height: 1.5;

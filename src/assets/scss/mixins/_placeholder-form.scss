@@ -1,0 +1,39 @@
+//-----------------------------------
+// placeholders
+//
+// Mixin para definir a cor e font do text do placeholder do input
+//
+//  Exemplo de uso:
+//  @include placeholder-form(#fff, arial, 400);
+//
+
+//-----------------------------------
+// CONFIG
+//-----------------------------------
+
+@mixin placeholder-form($color, $font_family, $font_weight){
+    &.placeholder {
+		font-family: $font_family;
+		font-weight: $font_weight;
+		color: $color;
+		opacity: 1;
+    }
+	&:-moz-placeholder {
+		font-family: $font_family;
+		font-weight: $font_weight;
+		color: $color;
+		opacity: 1;
+    }
+	&::-moz-placeholder {
+		font-family: $font_family;
+		font-weight: $font_weight;
+		color: $color;
+		opacity: 1;
+    }
+	&::-webkit-input-placeholder {
+		font-family: $font_family;
+		font-weight: $font_weight;
+		color: $color;
+		opacity: 1;
+    }
+}
