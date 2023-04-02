@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef  } from "react"
 const FormMsg = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [tel, setTel] = useState('');
     const [message, setMessage] = useState('');
     const [btnDisable, setBtnDisable] = useState(true);
+
+    const telMask = useRef();
 
     useEffect(()=> {
         const [nameVal, emailVal, telVal, messageVal] = [name.trim(), email.trim(), tel.trim(), message.trim()];
@@ -17,13 +19,33 @@ const FormMsg = () => {
             setBtnDisable(true);
         } else if(telVal === '') {
             setBtnDisable(true);
+        } else if(telVal.length < 13) {
+            setBtnDisable(true);
         } else if(messageVal === '') {
             setBtnDisable(true);
         } else {
             setBtnDisable(false);
         }
 
-    }, [name, email, tel, message])
+    }, [name, email, tel, message]);
+
+    const handleChange = () => {
+        const telValue = telMask.current.value;
+        const telNum = telValue.replace(/\D/g, '');
+        const telVal = telValue.length > 13 ? telNum.match(/(\d{0,2})(\d{0,5})(\d{0,4})/) : telNum.match(/(\d{0,2})(\d{0,4})(\d{0,4})/);
+
+        telMask.current.value = !telVal[2] ? telVal[1]
+            : `(${telVal[1]})${telVal[2]}${`${
+                telVal[3] ? `-${telVal[3]}` : ''
+            }`}${`${telVal[4] ? `-${telVal[4]}` : ''}`}`;
+
+        const numbers = telMask.current.value;
+        setTel(numbers);
+    };
+
+    useEffect(() => {
+        handleChange();
+    }, [tel]);
 
     return(
         <form action="" className="form-msg">
@@ -67,9 +89,20 @@ const FormMsg = () => {
                         type="tel" 
                         name="tel-field" 
                         id="tel-field" 
+                        ref={ telMask }
                         value={ tel } 
                         onChange={ e => setTel(e.target.value) } 
                         placeholder="(  ) ____-____" />
+                    { /*
+                    <input 
+                        type="tel" 
+                        name="tel-field" 
+                        id="tel-field" 
+                        value={ tel } 
+                        onChange={ e => setTel(e.target.value) } 
+                        placeholder="(  ) ____-____" />
+
+                    */ }
                 </div>
             </div>
             <div className="form-msg__wrap">
