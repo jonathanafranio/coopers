@@ -1,0 +1,56 @@
+.to-do {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+
+    &__header {
+        color: #fff;
+        background-color: #000;
+        transform: skewY(-3deg);
+
+        &-txt {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            transform: skewY(3deg);
+            @media screen and (max-width: 599px) {
+                padding: 60px 15px;
+            }
+            @media screen and (min-width: 600px) {
+                padding: 125px 0;
+            }
+        }
+
+        &-title {
+            display: inline-block;
+            font-family: $main-font;
+            font-weight: 600;
+            border-bottom: 4px solid $green;
+
+            @media screen and (max-width: 599px) {
+                font-size: 5rem;
+                line-height: 5rem;
+            }
+            @media screen and (min-width: 600px) {
+                font-size: 6rem;
+                line-height: 6rem;
+            }
+        }
+
+        &-p {
+            font-family: $second-font;
+            @media screen and (max-width: 599px) {
+                font-size: 1.6rem;
+                line-height: 2rem;
+            }
+            @media screen and (min-width: 600px) {
+                font-size: 2.4rem;
+                line-height: 2.9rem;
+            }
+        }
+    }
+
+}
