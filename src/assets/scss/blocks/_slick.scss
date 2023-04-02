@@ -1,0 +1,158 @@
+.slick {
+    display: block;
+    width: 100%;
+    max-width: 1160px;
+    min-height: 520px;
+    margin: 0 auto;
+    position: relative;
+
+    @media screen and (max-width: 1023px) {
+        padding: 30px 15px 0;
+    }
+
+    @media screen and (min-width: 1024px) {
+        padding-top: 80px;
+        padding-left: 70px;
+    }
+
+
+    &:before {
+        content: '';
+        height: 520px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: $green;
+        border-radius: 10px;
+        z-index: 0;
+
+        @media screen and (max-width: 599px) {
+            width: 100%;
+        }
+        @media screen and (min-width: 600px) {
+            width: 93.10%;
+            max-width: 1080px;
+        }
+    }
+
+    * {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__title {
+        margin-left: 10px;
+        margin-bottom: 40px;
+        font-family: $second-font;
+        font-weight: 700;
+        color: #fff;
+        
+        @media screen and (max-width: 1023px) {
+            font-size: 3rem;
+        }
+        @media screen and (min-width: 1024px) {
+            font-size: 4.8rem;
+        }
+    }
+
+    .slick-dots {
+        width: 100%;
+        text-align: center;
+        list-style-type: none;
+
+        li {
+            display: inline-block;
+            background-color: #c4c4c4;
+            border-radius: 100%;
+
+            @media screen and (min-width: 1024px) {
+                width: 29px;
+                height: 29px;
+                margin: auto 10px;
+            }
+            @media screen and (max-width: 1023px) {
+                margin: auto 6px 10px;
+                width: 20px;
+                height: 20px;
+            }
+
+            &.slick-active {
+                background-color: $green;
+            }
+        }
+
+        button {
+            width: 100%;
+            height: 29px;
+            border: none;
+            opacity: 0;
+        }
+    }
+
+    &__wrap-post {
+        padding: 0 10px 15px;
+    }
+
+    &__post {
+        display: flex;
+        flex-direction: column;
+        background: #FFFFFF;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0px 8px 16px rgba(12, 41, 208, 0.08);
+    }
+
+    &__post-fig{
+        width: 100%;
+        height: 200px;
+        padding: 0;
+        margin: 0;
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        &:after {
+            content: '';
+            width: 49px;
+            height: 56px;
+            position: absolute;
+            right: 20px;
+            bottom: -27px;
+            z-index: 9;
+            background-image: url(../../img/icone-coopers.png);
+        }
+    }
+
+    &__post-type {
+        margin: 24px auto auto 32px;
+        padding: 0 12px;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 28px;
+        color: #9499B3;
+        border-radius: 30px;
+        border: 1px solid #9499B3;
+    }
+
+    &__post-title {
+        margin: 15px 32px;
+        min-height: 84px;
+        font-family: $second-font;
+        font-size: 1.8rem;
+        font-weight: 500;
+        line-height: 2.1rem;
+        color: #312F4F;
+    }
+
+    &__read-more {
+        margin: 23px 32px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: $green;
+    }
+}
