@@ -2,10 +2,6 @@ import Link from "next/link";
 import React from "react";
 import Slick from "react-slick";
 
-//import "slick-carousel/slick/slick.css";
-//import "slick-carousel/slick/slick-theme.css";
-
-
 const SlickPost = (props) => {
     const { posts } = props;
     const settings = {
