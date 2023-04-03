@@ -19,7 +19,7 @@ const ModalLogin = (props) => {
                     </div>
 
                     <div className="modal-login__field">
-                        <label htmlFor="user-pass">Password::</label>
+                        <label htmlFor="user-pass">Password:</label>
                         <input type="password" name="user-pass" id="user-pass" />
                     </div>
 
