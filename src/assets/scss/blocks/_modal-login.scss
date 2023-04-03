@@ -1,0 +1,133 @@
+.modal-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(#000, 0.8);
+    z-index: 99;
+
+    &__content {
+        display: flex;
+        background-color: #fff;
+        color: #000;
+        position: relative;
+        @media screen and (max-width: 1023px) {
+            width: 90%;
+        }
+        @media screen and (min-width: 1024px) {
+            flex-direction: row-reverse;
+            justify-content: start;
+            width: 932px;
+            padding-top: 76px;
+        }
+    }
+
+    &__form {
+        @media screen and (max-width: 1023px) {
+            width: 100%;
+            padding: 0 10px;
+        }
+        @media screen and (min-width: 1024px) {
+            margin-left: 42px;
+        }
+    }
+
+    &__ico {
+        @media screen and (max-width: 1023px) {
+            display: none;
+        }
+        @media screen and (min-width: 1024px) {
+            display: block;
+            margin-left: 52px;
+            width: 231px;
+            height: 231px;
+            background-image: url(../../img/ico-modal-login.png);
+        }
+    }
+
+    &__title {
+        margin-top: 45px;
+        margin-bottom: 20px;
+        font-family: $second-font;
+        
+        font-weight: 400;
+        color: $green;
+        @media screen and (max-width: 1023px) {
+            font-size: 2.5rem;
+        }
+        @media screen and (min-width: 1024px) {
+            font-size: 5rem;
+        }
+        
+        strong {
+            color: #000;
+            font-weight: 700;
+            @media screen and (max-width: 1023px) {
+                font-size: 3.5rem;
+            }
+            @media screen and (min-width: 1024px) {
+                font-size: 8rem;
+            }
+        }
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+
+        input {
+            max-width: 342px;
+            border-color: #959595;
+            border-radius: 10px;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 64px;
+        width: 100%;
+        
+        font-family: $second-font;
+        font-weight: 600;
+        font-size: 2.4rem;
+        color: #fff;
+        background-color: $green;
+        border: none;
+        transition: background-color 0.7s ease-in-out;
+        will-change: background-color;
+        
+        @media screen and (max-width: 1023px) {
+            margin-bottom: 15px;
+        }
+        @media screen and (min-width: 1024px) {
+            margin-left: 20px;
+            margin-bottom: 53px;
+            max-width: 300px;
+            margin-top: 44px;
+        }
+
+        &:hover {
+            background-color: #000;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        right: 23px;
+        top: 20px;
+        font-family: $second-font;
+        font-weight: 700;
+        font-size: 2rem;
+        color: #000;
+        background-color: transparent;
+        border: none;
+
+    }
+}
