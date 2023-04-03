@@ -81,9 +81,11 @@
         margin-bottom: 20px;
 
         input {
-            max-width: 342px;
             border-color: #959595;
             border-radius: 10px;
+            @media screen and (min-width: 1024px) {
+                max-width: 342px;
+            }
         }
     }
 
