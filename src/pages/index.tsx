@@ -15,6 +15,85 @@ export default function Home() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    const todoLogout = {
+        first: [
+            {
+                checked: true,
+                id: 1,
+                description: 'this is a new task'
+            },
+            {
+                checked: false,
+                id: 2,
+                description: 'Develop the To-do list page'
+            },
+            {
+                checked: false,
+                id: 3,
+                description: 'Create the drag-and-drop function'
+            },
+            {
+                checked: false,
+                id: 4,
+                description: 'Add new tasks'
+            },
+            {
+                checked: false,
+                id: 5,
+                description: 'Delete itens'
+            },
+            {
+                checked: false,
+                id: 6,
+                description: 'Erase all'
+            },
+            {
+                checked: false,
+                id: 7,
+                description: 'Checked item goes to Done list'
+            },
+            {
+                checked: false,
+                id: 8,
+                description: 'This item label may be edited'
+            }
+        ],
+        secound: [
+            {
+                checked: true,
+                id: 1,
+                description: 'Get FTP credentials'
+            },
+            {
+                checked: true,
+                id: 2,
+                description: 'Home Page Design'
+            },
+            {
+                checked: true,
+                id: 3,
+                description: 'E-mail John about the deadline'
+            },
+            {
+                checked: true,
+                id: 4,
+                description: 'Create a Google Drive folder'
+            },
+            {
+                checked: true,
+                id: 5,
+                description: 'Send a gift to the client'
+            }
+        ]
+    }
+    const [firstToDo, setFirstToDo] = useState(todoLogout.first);
+    const [lastTodo, setLastTodo] = useState(todoLogout.secound);
+
+    const toDo_txt = {
+        title: 'To-do List',
+        description: 'Drag and drop to set your main priorities, check when done and create what´s new.'
+    }
+
     useEffect(() => {
         if(!router.isReady) return;
 
@@ -47,7 +126,11 @@ export default function Home() {
                     link_url="#to-do"
                     link_text="Go to To-do list" />
 
-                <SectionToDo />
+                <SectionToDo 
+                    title={ toDo_txt.title } 
+                    description={ toDo_txt.description } 
+                    first_list={ firstToDo } 
+                    second_list={ lastTodo } />
 
                 { loading ? ( <Preload /> ) : false }
 
