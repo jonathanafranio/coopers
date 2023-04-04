@@ -12,9 +12,16 @@ export const getUsers = (_, res) => {
 };
 
 export const login = (req, res) => {
-    const { user, password } = req.body;
-    let q = `SELECT * FROM users WHERE name = ${ user };`;
-    if(user.indexOf('@') > -1) {
-        q = `SELECT * FROM users WHERE email = ${ user };`;
-    }
+    const { body } = req;
+    const { user, password } = body;
+    
+    console.log({ body })
+    const q = `SELECT * FROM users WHERE name = '${ user }';`;
+    
+    db.query(q, (err, data) => {
+        if(err) return res.json(err);
+
+        return res.status(200).json(data);
+
+    })
 }
