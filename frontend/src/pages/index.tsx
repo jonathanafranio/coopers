@@ -61,27 +61,27 @@ export default function Home() {
         secound: [
             {
                 checked: true,
-                id: 1,
+                id: 11,
                 description: 'Get FTP credentials'
             },
             {
                 checked: true,
-                id: 2,
+                id: 12,
                 description: 'Home Page Design'
             },
             {
                 checked: true,
-                id: 3,
+                id: 13,
                 description: 'E-mail John about the deadline'
             },
             {
                 checked: true,
-                id: 4,
+                id: 14,
                 description: 'Create a Google Drive folder'
             },
             {
                 checked: true,
-                id: 5,
+                id: 15,
                 description: 'Send a gift to the client'
             }
         ]

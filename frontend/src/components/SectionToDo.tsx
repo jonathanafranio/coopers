@@ -28,7 +28,7 @@ const SectionToDo = (props) => {
                                 <input 
                                     type="checkbox" 
                                     value={ item.checked } 
-                                    checked={ item.checked } 
+                                    defaultChecked={ item.checked } 
                                     id={ item.id } 
                                     onClick={ e => alert(e.target.value) } />
 
@@ -59,7 +59,7 @@ const SectionToDo = (props) => {
                                 <input 
                                     type="checkbox" 
                                     value={ item.checked } 
-                                    checked={ item.checked } 
+                                    defaultChecked={ item.checked } 
                                     id={ item.id } 
                                     onClick={ e => alert(e.target.value) } />
 
