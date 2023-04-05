@@ -62,9 +62,21 @@
         @media screen and (min-width: 1024px) {
             font-size: 5rem;
         }
-        
+
+        &.-register {
+            margin-top: 0;
+            @media screen and (max-width: 1023px) {
+                font-size: 1.6rem;
+            }
+            @media screen and (min-width: 1024px) {
+                font-size: 4rem;
+            }
+        }
+        span,
         strong {
             color: #000;
+        }
+        strong {
             font-weight: 700;
             @media screen and (max-width: 1023px) {
                 font-size: 3.5rem;
@@ -110,9 +122,8 @@
         }
         @media screen and (min-width: 1024px) {
             margin-left: 20px;
-            margin-bottom: 53px;
+            margin-bottom: 20px;
             max-width: 300px;
-            margin-top: 44px;
         }
 
         &:hover {
@@ -131,5 +142,28 @@
         background-color: transparent;
         border: none;
 
+    }
+
+    &__error {
+        color: #c95d40;
+    }
+
+    p {
+        text-align: center;
+        @media screen and (min-width: 1024px) {
+            max-width: 342px;
+        }
+    }
+
+    &__loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        background-color: rgba(255, 255, 255, 0.8);
+        z-index: 9;
     }
 }
