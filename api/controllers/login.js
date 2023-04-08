@@ -11,9 +11,9 @@ export const login = (req, res) => {
         if(err) return res.json(err);
 
         if(data.length > 0) {
-            return res.status(200).json(data);
+            return res.status(200).json({ status: 200, user: data[0] });
         } else {
-            return req.status(401).json('Usuario ou senha errada.');
+            return res.status(401).json({ status: 401, error: 'Usuario ou senha errada.' });
         }
     })
 }

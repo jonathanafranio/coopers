@@ -16,9 +16,16 @@ const ModalLogin = (props) => {
 
     window.addEventListener('keydown', (e) => { e.key === "Escape" ? toggleModal(false) : false });
 
+    const clearLogin = () => {
+        setUserLogin('');
+        setPassLogin('');
+        setFailedLogin(false);
+    }
+
     const toggleRegister = (e) => {
         e.preventDefault();
         setShowRegister(!showRegister);
+        clearLogin()
     }
 
     const login = (e) => {
@@ -36,13 +43,17 @@ const ModalLogin = (props) => {
             headers: myHeaders,
             body: JSON.stringify({ user: userLogin, password: passLogin })
         };
-
+        
         fetch("http://localhost:8800/login", requestOptions)
             .then(response => response.json())
             .then(result => {
-                localStorage.setItem("user-login", JSON.stringify(result[0]));
+                if(result.status === 200) {
+                    localStorage.setItem("user-login", JSON.stringify(result.user));
+                    setTimeout(()=> toggleModal(false), 100);
+                } else {
+                    setFailedLogin(true)
+                }
                 setLoadingPromisse(false);
-                setTimeout(()=> toggleModal(false), 100);
             })
             .catch(erro => {
                 setFailedLogin(true)

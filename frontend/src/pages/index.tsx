@@ -116,12 +116,10 @@ export default function Home() {
 
     useEffect(() => {
         const verifyLogin = setInterval(() => {
-            if (typeof window !== 'undefined') {
-                const credentialsLogin = localStorage.getItem('user-login');
-                if(credentialsLogin) {
-                    clearInterval(verifyLogin);   
-                    setLogin( JSON.parse(credentialsLogin) );        
-                }
+            const credentialsLogin = localStorage.getItem('user-login');
+            if(credentialsLogin) {
+                clearInterval(verifyLogin);
+                setLogin( JSON.parse(credentialsLogin) );        
             }
         }, 100);
     }, [])
