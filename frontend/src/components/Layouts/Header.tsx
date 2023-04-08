@@ -4,7 +4,12 @@ import Logo from "../../assets/img/logo.png"
 import ModalLogin from '../ModalLogin'
 import { useState } from "react"
 
-const Header = () => {
+const Header = (props) => {
+    const { logged } = props;
+    const logout = () => {
+        localStorage.removeItem('user-login');
+        location.href = '/';
+    }
     const [modalShow, setModalShow] = useState(false)
     return (
         <header className="header">
@@ -12,9 +17,16 @@ const Header = () => {
                 <Image src={ Logo } alt="Coopers" />
             </Link>
 
-            <button className="header__btn" onClick={ e => setModalShow(true) }>
-                entrar
-            </button>
+            { logged.name ? (
+                <button className="header__btn" onClick={ e => logout() }>
+                    Hi { logged.name }! Logout?
+                </button>                
+            ) : (
+                <button className="header__btn" onClick={ e => setModalShow(true) }>
+                    entrar
+                </button>
+            ) }
+            
 
             { modalShow ? (<ModalLogin toggleModal={ setModalShow } />) : false }
         </header>

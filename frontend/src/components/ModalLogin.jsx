@@ -40,8 +40,9 @@ const ModalLogin = (props) => {
         fetch("http://localhost:8800/login", requestOptions)
             .then(response => response.json())
             .then(result => {
-                console.log({ result })
+                localStorage.setItem("user-login", JSON.stringify(result[0]));
                 setLoadingPromisse(false);
+                setTimeout(()=> toggleModal(false), 100);
             })
             .catch(erro => {
                 setFailedLogin(true)

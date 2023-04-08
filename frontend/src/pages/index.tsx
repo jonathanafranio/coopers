@@ -7,9 +7,11 @@ import SectionToDo from '@/components/SectionToDo'
 import FormMsg from '@/components/FormMsg'
 import SlickPost from '@/components/SlickPost'
 import Preload from '@/components/Preload'
+import { login } from '../../../api/controllers/login';
 
 
 export default function Home() {
+    
     const router = useRouter();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -86,13 +88,14 @@ export default function Home() {
             }
         ]
     }
+    const [login, setLogin] = useState({});
     const [firstToDo, setFirstToDo] = useState(todoLogout.first);
     const [lastTodo, setLastTodo] = useState(todoLogout.secound);
 
     const toDo_txt = {
         title: 'To-do List',
         description: 'Drag and drop to set your main priorities, check when done and create what´s new.'
-    }
+    };
 
     useEffect(() => {
         if(!router.isReady) return;
@@ -110,6 +113,18 @@ export default function Home() {
             })
 
     }, [router.isReady])
+
+    useEffect(() => {
+        const verifyLogin = setInterval(() => {
+            if (typeof window !== 'undefined') {
+                const credentialsLogin = localStorage.getItem('user-login');
+                if(credentialsLogin) {
+                    clearInterval(verifyLogin);   
+                    setLogin( JSON.parse(credentialsLogin) );        
+                }
+            }
+        }, 100);
+    }, [])
     
     return(
         <>
@@ -118,7 +133,7 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Layouts>
+            <Layouts logged={ login }>
                 <Hero 
                     title_strong="Organize" 
                     title_text="your daily jobs" 
