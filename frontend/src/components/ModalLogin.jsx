@@ -88,9 +88,18 @@ const ModalLogin = (props) => {
             .then(r => r.json())
             .then(result => {
                 console.log({ result });
+
                 setRespReg(result.msg);
                 setLoadingPromisse(false);
-                if(result.status === 200) {}
+                if(result.status === 200) {
+                    const objStorager = {
+                        id: result.dt.insertId,
+                        name: userRegister,
+                        email: mailRegister
+                    }
+                    localStorage.setItem("user-login", JSON.stringify(objStorager));
+                    setTimeout(()=> toggleModal(false), 3000);
+                }
             })
             .catch(erro => {
                 setRespReg('Failed to register. Try again.')
