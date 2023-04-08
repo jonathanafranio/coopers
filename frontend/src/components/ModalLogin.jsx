@@ -11,6 +11,7 @@ const ModalLogin = (props) => {
     const [userRegister, setUserRegister] = useState('');
     const [mailRegister, setMailRegister] = useState('');
     const [passRegister, setPassRegister] = useState('');
+    const [respReg, setRespReg] = useState(null);
 
     const [loadingPromisse, setLoadingPromisse] = useState(false);
 
@@ -45,7 +46,7 @@ const ModalLogin = (props) => {
         };
         
         fetch("http://localhost:8800/login", requestOptions)
-            .then(response => response.json())
+            .then(r => r.json())
             .then(result => {
                 if(result.status === 200) {
                     localStorage.setItem("user-login", JSON.stringify(result.user));
@@ -62,12 +63,49 @@ const ModalLogin = (props) => {
             });
     }
 
+    const register = (e) => {
+        e.preventDefault();
+        if(userRegister.trim() === "") return;
+        if(mailRegister.trim() === "") return;
+        if(passRegister.trim() === "") return;
+
+        setRespReg(null);
+        setLoadingPromisse(true);
+
+        let myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+        const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify({
+                user: userRegister,
+                email: mailRegister,
+                password: passRegister
+            })
+        };
+        
+        fetch("http://localhost:8800/users", requestOptions)
+            .then(r => r.json())
+            .then(result => {
+                console.log({ result });
+                setRespReg(result.msg);
+                setLoadingPromisse(false);
+                if(result.status === 200) {}
+            })
+            .catch(erro => {
+                setRespReg('Failed to register. Try again.')
+                console.log('erro: ', erro)
+                setLoadingPromisse(false);
+            });
+
+    }
+
     return(
         <div className="modal-login">
             <div className="modal-login__content">
                 <button className="modal-login__close" onClick={ e => toggleModal(false) }>close</button>
                 { showRegister ? (
-                    <form action="" className="modal-login__form">
+                    <form className="modal-login__form" onSubmit={ e => register(e) }>
                         <h2 className="modal-login__title">
                             <strong>Register</strong><br /> here.
                         </h2>
@@ -103,12 +141,15 @@ const ModalLogin = (props) => {
                                 onChange={ e => setPassRegister(e.target.value) } />
                         </div>
                         
+                        { respReg ? (
+                            <p className="modal-login__error">{ respReg }</p>
+                        ) : false }
                         <button className="modal-login__btn">Register</button>
                         <p>Already registered?  <a href="#" onClick={ e => toggleRegister(e) }>to enter.</a></p>
 
                     </form>
                 ) : (
-                    <form action="" className="modal-login__form" onSubmit={ e => login(e) }>
+                    <form className="modal-login__form" onSubmit={ e => login(e) }>
                         <h2 className="modal-login__title">
                             <strong>Sign in</strong> <br />
                             to access your list
