@@ -6,8 +6,14 @@ const ToDo = (props) => {
     const [completeList, setCompleteList] = useState(false);
     
     const isComplete = () => {
-        const list_complete = list.every((item) => item.checked);
+        const list_complete = list.length > 0 ? list.every((item) => item.checked) : false;
         setCompleteList(list_complete);
+    }
+
+    const addNew = (e) => {
+        e.preventDefault();
+
+        
     }
 
     useEffect(() => {
@@ -33,6 +39,9 @@ const ToDo = (props) => {
             ) }
 
             <ul className="to-do__ul">
+                <li className="to-do__li">
+                    <a href="#" className="to-do__add" onClick={ e => addNew(e) }>add a new task</a>
+                </li>
                 { list.map( (item: any) => (
                     <li key={ item.id } className="to-do__li">
                         <input 

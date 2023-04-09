@@ -158,6 +158,29 @@
 
     }
 
+    &__add {
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        font-family: $second-font;
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.6rem;
+        color: #000;
+
+        
+        &:before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+            background: #fff url(../../img/add.png) center no-repeat;
+            border: 1px solid #a1a1a1;
+            border-radius: 100%;
+        }
+    }
+
     &__del {
         float: right;
         width: auto;

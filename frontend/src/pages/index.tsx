@@ -118,8 +118,12 @@ export default function Home() {
         const verifyLogin = setInterval(() => {
             const credentialsLogin = localStorage.getItem('user-login');
             if(credentialsLogin) {
+                const list_1 = localStorage.getItem('list_1');
+                const list_2 = localStorage.getItem('list_2');
                 clearInterval(verifyLogin);
-                setLogin( JSON.parse(credentialsLogin) );        
+                setLogin( JSON.parse(credentialsLogin) );
+                setFirstToDo( JSON.parse(list_1) );
+                setLastTodo( JSON.parse(list_2) );
             }
         }, 100);
     }, [])

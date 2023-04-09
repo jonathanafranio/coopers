@@ -10,7 +10,12 @@ export const login = (req, res) => {
         if(err) return res.json(err);
 
         if(data.length > 0) {
-            return res.status(200).json({ status: 200, user: data[0] });
+            const user = data[0];
+            const q_list = `SELECT * FROM list_itens WHERE user = ${user.id};`;
+            db.query(q_list, (e, lists) => {
+                if(e) return res.json(e);
+                return res.status(200).json({ status: 200, user, lists });
+            })
         } else {
             return res.status(401).json({ status: 401, error: 'Usuario ou senha errada.' });
         }
