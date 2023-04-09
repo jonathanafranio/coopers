@@ -1,6 +1,7 @@
 import ToDo from "./ToDo";
 const SectionToDo = (props) => {
-    const { title, description, first_list, second_list } = props;
+    const { title, description, first_list, second_list, login } = props;
+    const user = login ? login.id : null;
     return (
         <section id="to-do" className="to-do">
             { title ? (
@@ -15,8 +16,8 @@ const SectionToDo = (props) => {
             ) : false }
 
             <div className="to-do__container">
-                <ToDo list={ first_list } />
-                <ToDo list={ second_list } />
+                <ToDo id_list={ 1 } user={ user } list={ first_list } />
+                <ToDo id_list={ 2 } user={ user } list={ second_list } />
             </div>
         </section>
     )

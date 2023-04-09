@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react"
 
+import ModalAdd from "./ModalAdd";
+
 const ToDo = (props) => {
-    //const [list, setList] = useState(props.list);
-    const list = props.list;
+    const { list, id_list, user } = props;
+    
     const [completeList, setCompleteList] = useState(false);
+    const [modalAdd, setModalAdd] = useState(false);
     
     const isComplete = () => {
         const list_complete = list.length > 0 ? list.every((item) => item.checked) : false;
@@ -12,7 +15,12 @@ const ToDo = (props) => {
 
     const addNew = (e) => {
         e.preventDefault();
+        if(!user) return;
 
+        console.log({ user })
+
+        setModalAdd(true);
+        //fetch
         
     }
 
@@ -31,7 +39,7 @@ const ToDo = (props) => {
                     Congratulions! <br />
                     <strong>You have done { list.length } tasks</strong>
                 </span>
-            ): (
+            ) : (
                 <span className="to-do__list-subtitle">
                     Take a breath. <br />
                     Start doing.
@@ -60,6 +68,9 @@ const ToDo = (props) => {
             </ul>
 
             <button className="to-do__earse-all">erase all</button>
+
+            { modalAdd ? (<ModalAdd list_id={ id_list } user={ user } close_fun={ setModalAdd } />) : false }
+
         </div>
     )
 }
