@@ -16,10 +16,12 @@ import { userLogin } from '../store/actions/user'
 export default function Home() {
     const dispatch = useDispatch();
 
-    const { login } = useSelector((state: any) => state.user);
     const setLogin = (user: object) => {
         dispatch(userLogin(user))
     }
+
+    const login = useSelector((state: any) => state.user);
+    
 
     const router = useRouter();
     const [posts, setPosts] = useState([]);

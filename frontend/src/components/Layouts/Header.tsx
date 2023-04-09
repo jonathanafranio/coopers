@@ -16,7 +16,10 @@ const Header = (props) => {
         dispatch(userLogin(user))
     }*/
 
-    const { logged } = props;
+    const { user } = props.logged
+
+    //const { logged } = props;
+    //console.log('logged: ', logged.user)
 
     const logout = () => {
         localStorage.removeItem('user-login');
@@ -29,9 +32,9 @@ const Header = (props) => {
                 <Image src={ Logo } alt="Coopers" />
             </Link>
 
-            { logged ? (
+            { user ? (
                 <button className="header__btn" onClick={ e => logout() }>
-                    Hi { logged.name }! Logout?
+                    Hi { user.name }! Logout?
                 </button>                
             ) : (
                 <button className="header__btn" onClick={ e => setModalShow(true) }>
