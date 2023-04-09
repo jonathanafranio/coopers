@@ -4,8 +4,20 @@ import Logo from "../../assets/img/logo.png"
 import ModalLogin from '../ModalLogin'
 import { useState } from "react"
 
+//import { useSelector, useDispatch } from "react-redux";
+//import { userLogin } from '@/store/actions/user'
+
 const Header = (props) => {
+    //const dispatch = useDispatch();
+
+    /*const { login } = useSelector((state) => state.user);
+    console.log({ login })
+    const setLogin = (user: object) => {
+        dispatch(userLogin(user))
+    }*/
+
     const { logged } = props;
+
     const logout = () => {
         localStorage.removeItem('user-login');
         location.href = '/';
@@ -17,7 +29,7 @@ const Header = (props) => {
                 <Image src={ Logo } alt="Coopers" />
             </Link>
 
-            { logged.name ? (
+            { logged ? (
                 <button className="header__btn" onClick={ e => logout() }>
                     Hi { logged.name }! Logout?
                 </button>                

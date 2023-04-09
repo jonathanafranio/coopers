@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+//import { storeWrapper } from '@/store';
 import { useRouter } from "next/router";
 import Layouts from '@/components/Layouts/Layouts'
 import Hero from '@/components/Hero'
@@ -7,11 +9,18 @@ import SectionToDo from '@/components/SectionToDo'
 import FormMsg from '@/components/FormMsg'
 import SlickPost from '@/components/SlickPost'
 import Preload from '@/components/Preload'
-import { login } from '../../../api/controllers/login';
+
+import { userLogin } from '../store/actions/user'
 
 
 export default function Home() {
-    
+    const dispatch = useDispatch();
+
+    const { login } = useSelector((state: any) => state.user);
+    const setLogin = (user: object) => {
+        dispatch(userLogin(user))
+    }
+
     const router = useRouter();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -88,7 +97,7 @@ export default function Home() {
             }
         ]
     }
-    const [login, setLogin] = useState({});
+    //const [login, setLogin] = useState({});
     const [firstToDo, setFirstToDo] = useState(todoLogout.first);
     const [lastTodo, setLastTodo] = useState(todoLogout.secound);
 
