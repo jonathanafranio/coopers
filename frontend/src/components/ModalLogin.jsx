@@ -52,22 +52,18 @@ const ModalLogin = (props) => {
                     localStorage.setItem("user-login", JSON.stringify(result.user));
 
                     const lists = result.lists.map((item) => {
-                        const { id, description, list, user, checked } = item;
+                        const { id, description, list, checked } = item;
                         return {
                             id,
                             description,
                             list,
-                            user,
                             checked: checked.data[0] > 0 ? true : false
                         }
                     })
-
-                    console.log({ lists })
                     
                     const list_1 = lists?.filter((item) => item.list == 1);
                     const list_2 = lists?.filter((item) => item.list == 2);
 
-                    console.log({ list_1, list_2 });
                     localStorage.setItem("list_1", JSON.stringify(list_1));
                     localStorage.setItem("list_2", JSON.stringify(list_2));
                     setTimeout(()=> toggleModal(false), 100);
