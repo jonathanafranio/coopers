@@ -4,7 +4,8 @@ import Logo from "../../assets/img/logo.png"
 import ModalLogin from '../ModalLogin'
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
-import { userLogout } from '@/store/actions/user'
+import { userLogout } from '@/store/actions/user';
+import { clearList1, clearList2 } from '@/store/actions/lists';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -12,10 +13,9 @@ const Header = () => {
     const { user } = useSelector((state: any) => state.user);
 
     const logout = () => {
-        localStorage.removeItem('user-login');
-        localStorage.removeItem("list_1");
-        localStorage.removeItem("list_2");
         dispatch(userLogout())
+        dispatch(clearList1());
+        dispatch(clearList2());
         location.href = '/';
     }
     const [modalShow, setModalShow] = useState(false)

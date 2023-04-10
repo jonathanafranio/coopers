@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from "@/store/actions/user";
+import { editList1, editList2 } from '@/store/actions/lists';
 import Preload from './Preload';
 const ModalLogin = (props) => {
     const dispatch = useDispatch();
@@ -53,8 +54,7 @@ const ModalLogin = (props) => {
             .then(result => {
                 if(result.status === 200) {
                     dispatch(loginUser(result.user));
-                    localStorage.setItem("user-login", JSON.stringify(result.user));
-
+                    
                     const lists = result.lists.map((item) => {
                         const { id, description, list, checked } = item;
                         return {
@@ -68,8 +68,9 @@ const ModalLogin = (props) => {
                     const list_1 = lists?.filter((item) => item.list == 1);
                     const list_2 = lists?.filter((item) => item.list == 2);
 
-                    localStorage.setItem("list_1", JSON.stringify(list_1));
-                    localStorage.setItem("list_2", JSON.stringify(list_2));
+                    dispatch(editList1(list_1));
+                    dispatch(editList2(list_2));
+                    
                     setTimeout(()=> toggleModal(false), 100);
                 } else {
                     setFailedLogin(true)

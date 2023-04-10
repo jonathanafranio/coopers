@@ -17,6 +17,14 @@ const reducer = (state = initialState, action) => {
             const newState = { ...state };
                 newState.list_2 = action.payload
             return newState;
+        case 'CLEAR_LIST1':
+            const clearState = { ...state };
+                clearState.list_1 = [];
+            return clearState;
+        case 'CLEAR_LIST2':
+            const clearState = { ...state };
+                clearState.list_2 = [];
+            return clearState;
         default:
             return state;
     }
