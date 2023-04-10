@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser } from "@/store/actions/user";
 import Preload from './Preload';
 const ModalLogin = (props) => {
+    const dispatch = useDispatch();
     const { toggleModal } = props;
     const [showRegister, setShowRegister] = useState(false);
 
@@ -49,6 +52,7 @@ const ModalLogin = (props) => {
             .then(r => r.json())
             .then(result => {
                 if(result.status === 200) {
+                    dispatch(loginUser(result.user));
                     localStorage.setItem("user-login", JSON.stringify(result.user));
 
                     const lists = result.lists.map((item) => {

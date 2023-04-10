@@ -10,14 +10,14 @@ import FormMsg from '@/components/FormMsg'
 import SlickPost from '@/components/SlickPost'
 import Preload from '@/components/Preload'
 
-import { userLogin } from '../store/actions/user'
+import { loginUser } from '../store/actions/user'
 
 
 export default function Home() {
     const dispatch = useDispatch();
 
     const setLogin = (user: object) => {
-        dispatch(userLogin(user))
+        dispatch(loginUser(user))
     }
 
     const login = useSelector((state: any) => state.user);
@@ -123,21 +123,16 @@ export default function Home() {
                 setError(true)
             })
 
-    }, [router.isReady])
+        const credentialsLogin = localStorage.getItem('user-login');
+        if(credentialsLogin) {
+            const list_1 = localStorage.getItem('list_1');
+            const list_2 = localStorage.getItem('list_2');
+            setLogin( JSON.parse(credentialsLogin) );
+            setFirstToDo( JSON.parse(list_1) );
+            setLastTodo( JSON.parse(list_2) );
+        }
 
-    useEffect(() => {
-        const verifyLogin = setInterval(() => {
-            const credentialsLogin = localStorage.getItem('user-login');
-            if(credentialsLogin) {
-                const list_1 = localStorage.getItem('list_1');
-                const list_2 = localStorage.getItem('list_2');
-                clearInterval(verifyLogin);
-                setLogin( JSON.parse(credentialsLogin) );
-                setFirstToDo( JSON.parse(list_1) );
-                setLastTodo( JSON.parse(list_2) );
-            }
-        }, 100);
-    }, [])
+    }, [router.isReady])
     
     return(
         <>

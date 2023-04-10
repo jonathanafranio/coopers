@@ -7,7 +7,6 @@ const reducer = (state = initialState, action) => {
         case HYDRATE:
             return { ...state, ...action.payload.user };
         case 'USER_LOGIN':
-            //return { ...state, user: action.payload };
             const newState = { ...state };
                 newState.user = action.payload
             return newState;

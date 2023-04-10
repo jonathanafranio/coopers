@@ -1,4 +1,4 @@
-export const userLogin = (user: Object) => {
+export const loginUser = (user: Object) => {
     return {
         type: 'USER_LOGIN',
         payload: user
