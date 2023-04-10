@@ -10,21 +10,21 @@ const reducer = (state = initialState, action) => {
         case HYDRATE:
             return { ...state, ...action.payload };
         case 'EDIT_LIST1':
-            const newState = { ...state };
-                newState.list_1 = action.payload
-            return newState;
+            const newList1 = { ...state };
+                newList1.list_1 = action.payload
+            return newList1;
         case 'EDIT_LIST2':
-            const newState = { ...state };
-                newState.list_2 = action.payload
-            return newState;
+            const newList2 = { ...state };
+                newList2.list_2 = action.payload
+            return newList2;
         case 'CLEAR_LIST1':
-            const clearState = { ...state };
-                clearState.list_1 = [];
-            return clearState;
+            const clearList1 = { ...state };
+                clearList1.list_1 = [];
+            return clearList1;
         case 'CLEAR_LIST2':
-            const clearState = { ...state };
-                clearState.list_2 = [];
-            return clearState;
+            const clearList2 = { ...state };
+                clearList2.list_2 = [];
+            return clearList2;
         default:
             return state;
     }

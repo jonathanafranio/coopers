@@ -11,6 +11,7 @@ import SlickPost from '@/components/SlickPost'
 import Preload from '@/components/Preload'
 
 import { loginUser } from '../store/actions/user'
+import { editList1, editList2 } from '@/store/actions/lists'
 
 
 export default function Home() {
@@ -29,7 +30,9 @@ export default function Home() {
     const [error, setError] = useState(false);
 
     const todoLogout = {
-        first: [
+        first: [],
+        secound: []
+        /*first: [
             {
                 checked: true,
                 id: 1,
@@ -97,11 +100,12 @@ export default function Home() {
                 id: 15,
                 description: 'Send a gift to the client'
             }
-        ]
+        ]*/
     }
-    //const [login, setLogin] = useState({});
     const [firstToDo, setFirstToDo] = useState(todoLogout.first);
     const [lastTodo, setLastTodo] = useState(todoLogout.secound);
+    //const firstToDo = useSelector((state: any) => state.list_1);
+    //const lastTodo = useSelector((state: any) => state.list_2);
 
     const toDo_txt = {
         title: 'To-do List',
@@ -128,8 +132,12 @@ export default function Home() {
             const list_1 = localStorage.getItem('list_1');
             const list_2 = localStorage.getItem('list_2');
             setLogin( JSON.parse(credentialsLogin) );
-            setFirstToDo( JSON.parse(list_1) );
-            setLastTodo( JSON.parse(list_2) );
+
+            dispatch(editList1(JSON.parse(list_1)));
+            dispatch(editList2(JSON.parse(list_2)));
+            
+            //setFirstToDo( JSON.parse(list_1) );
+            //setLastTodo( JSON.parse(list_2) );
         }
 
     }, [router.isReady])
