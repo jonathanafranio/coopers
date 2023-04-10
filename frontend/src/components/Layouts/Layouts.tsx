@@ -5,7 +5,7 @@ import Footer from "./Footer"
 const Layouts = (props: object) => {
     return(
         <>
-            <Header logged={ props.logged } />
+            <Header />
             <main>
                 { props.children }
             </main>

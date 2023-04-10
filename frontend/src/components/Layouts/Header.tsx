@@ -3,26 +3,19 @@ import Image from "next/image"
 import Logo from "../../assets/img/logo.png"
 import ModalLogin from '../ModalLogin'
 import { useState } from "react"
+import { useSelector, useDispatch } from "react-redux";
+import { userLogout } from '@/store/actions/user'
 
-//import { useSelector, useDispatch } from "react-redux";
-//import { userLogin } from '@/store/actions/user'
+const Header = () => {
+    const dispatch = useDispatch();
 
-const Header = (props) => {
-    //const dispatch = useDispatch();
-
-    /*const { login } = useSelector((state) => state.user);
-    console.log({ login })
-    const setLogin = (user: object) => {
-        dispatch(userLogin(user))
-    }*/
-
-    const { user } = props.logged
-
-    //const { logged } = props;
-    //console.log('logged: ', logged.user)
+    const { user } = useSelector((state: any) => state.user);
 
     const logout = () => {
         localStorage.removeItem('user-login');
+        localStorage.removeItem("list_1");
+        localStorage.removeItem("list_2");
+        dispatch(userLogout())
         location.href = '/';
     }
     const [modalShow, setModalShow] = useState(false)
