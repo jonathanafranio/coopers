@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import ModalAdd from "./ModalAdd";
 
 const ToDo = (props) => {
-    const { list, id_list, user } = props;
+    const { list, id_list, user, removeFn } = props;
     
     const [completeList, setCompleteList] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
@@ -20,7 +20,6 @@ const ToDo = (props) => {
         console.log({ user })
 
         setModalAdd(true);
-        //fetch
         
     }
 
@@ -62,7 +61,8 @@ const ToDo = (props) => {
                         <label htmlFor={ item.id } className="to-do__label">
                             <span>{ item.description }</span>
                         </label>
-                        <button className="to-do__del">delete</button>
+                        { /* removeItem = (id_list, remove)  */ }
+                        <button className="to-do__del" onClick={ _ => removeFn(id_list, [item.id]) }>delete</button>
                     </li>
                 ) ) }
             </ul>
