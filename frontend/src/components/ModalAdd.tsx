@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import Preload from './Preload';
+import { editList1, editList2 } from '@/store/actions/lists'
 const ModalAdd = (props) => {
+    const dispatch = useDispatch();
     const { list_id, user, close_fun } = props;
 
     const [item, setItem] = useState('');
@@ -37,9 +40,9 @@ const ModalAdd = (props) => {
                 });
 
                 const list_current = lists.filter((item) => item.list == list_id)
-                //console.log({ list_current })
-                localStorage.setItem(`list_${list_id}`, JSON.stringify(list_current))
-                location.href = '/';
+
+                list_id == 1 ? dispatch(editList1(list_current)) : dispatch(editList2(list_current))
+                close_fun(false)
             })
             .catch(erro => {
                 console.log('erro: ', erro)

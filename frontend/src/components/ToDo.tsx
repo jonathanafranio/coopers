@@ -47,7 +47,6 @@ const ToDo = (props) => {
                 <li className="to-do__li">
                     <a href="#" className="to-do__add" onClick={ e => addNew(e) }>add a new task</a>
                 </li>
-                { /* const editItem = (id_list, id, item_checked) => { */ }
                 { list.map( (item: any) => (
                     <li key={ item.id } className="to-do__li">
                         <input 
@@ -67,8 +66,8 @@ const ToDo = (props) => {
             </ul>
 
             <button className="to-do__earse-all">erase all</button>
-
-            { modalAdd ? (<ModalAdd list_id={ id_list } user={ user } close_fun={ setModalAdd } />) : false }
+            
+            { modalAdd ? (<ModalAdd list_id={ id_list } user={ user.id } close_fun={ setModalAdd } />) : false }
 
         </div>
     )

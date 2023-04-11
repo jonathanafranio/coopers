@@ -49,9 +49,6 @@ const SectionToDo = (props) => {
 
         const checked = item_checked ? 1 : 0;
 
-        //console.log({ id_list, id, item_checked, checked })
-        //return;
-
         let myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
         const requestOptions = {
