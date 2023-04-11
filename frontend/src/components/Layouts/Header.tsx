@@ -16,7 +16,7 @@ const Header = () => {
         dispatch(userLogout())
         dispatch(clearList1());
         dispatch(clearList2());
-        location.href = '/';
+        //location.href = '/';
     }
     const [modalShow, setModalShow] = useState(false)
     return (
