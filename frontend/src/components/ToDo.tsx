@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react"
 
 import ModalAdd from "./ModalAdd";
-import ModalRm from "./ModalRm";
+import ModalRmItem from "./ModalRmItem";
+import ModalRmAll from "./ModalRmAll";
 
 const ToDo = (props) => {
     const { list, id_list, user, removeFn, editFn } = props;
     
     const [completeList, setCompleteList] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
-    const [propsRemove, setPropsRemove] = useState(null)
+    const [propsRemove, setPropsRemove] = useState(null);
+    const [rmmAll, setRmmAll] = useState(false);
     
     const isComplete = () => {
         const list_complete = list.length > 0 ? list.every((item) => item.checked) : false;
@@ -25,9 +27,10 @@ const ToDo = (props) => {
         if(!user) return;
         const list_map = list.map(item => item.id)
         removeFn(id_list, list_map)
+        setRmmAll(false)
     }
 
-    const confirm_remove = (id_list, list_map) => {
+    const confirm_remove = (id_list: number, list_map: [number]) => {
         removeFn(id_list, list_map)
         setPropsRemove(null)
     }
@@ -35,9 +38,7 @@ const ToDo = (props) => {
     useEffect(() => {
         isComplete()
     }, [props])
-    useEffect(() => {
-        isComplete()
-    }, [])    
+
     return(
         <div className={ completeList ? 'to-do__list -complete' : 'to-do__list' }>
             <h3 className="to-do__list-title">{ completeList ? 'Done' : 'To-do' }</h3>
@@ -75,16 +76,20 @@ const ToDo = (props) => {
                 ) ) }
             </ul>
 
-            <button className="to-do__earse-all" onClick={ _ => removeAll() }>erase all</button>
+            <button className="to-do__earse-all" onClick={ _ => setRmmAll(true) }>erase all</button>
             
             { modalAdd ? (<ModalAdd list_id={ id_list } user={ user.id } close_fun={ setModalAdd } />) : false }
 
             { propsRemove ? (
-                <ModalRm 
+                <ModalRmItem 
                     list_id={ id_list } 
                     item={ propsRemove } 
                     confirm_remove={ confirm_remove } 
                     close_fun={ setPropsRemove } />
+            ) : false }
+
+            { rmmAll ? (
+                <ModalRmAll confirm_remove={ removeAll } close_fun={ setRmmAll } />
             ) : false }
 
         </div>
