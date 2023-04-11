@@ -13,6 +13,11 @@ body {
 	font-family: $main-font;
 	color: $text-color;
 	background: $bg-body;
+
+	&.-hidden {
+		height: 100vh;
+		overflow: hidden;
+	}
 }
 
 a {

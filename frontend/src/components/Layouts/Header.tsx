@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import Logo from "../../assets/img/logo.png"
 import ModalLogin from '../ModalLogin'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { userLogout } from '@/store/actions/user';
 import { clearList1, clearList2 } from '@/store/actions/lists';
@@ -16,9 +16,12 @@ const Header = () => {
         dispatch(userLogout())
         dispatch(clearList1());
         dispatch(clearList2());
-        //location.href = '/';
     }
     const [modalShow, setModalShow] = useState(false)
+
+    useEffect(() => {
+        document.querySelector('body').classList.toggle('-hidden')
+    } ,[modalShow])
     return (
         <header className="header">
             <Link href={ '/' } className="header__logo">

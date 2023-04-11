@@ -39,6 +39,10 @@ const ToDo = (props: any) => {
         isComplete()
     }, [props])
 
+    useEffect(() => {
+        document.querySelector('body').classList.toggle('-hidden');
+    }, [rmmAll, propsRemove, modalAdd])
+
     return(
         <div className={ completeList ? 'to-do__list -complete' : 'to-do__list' }>
             <h3 className="to-do__list-title">{ completeList ? 'Done' : 'To-do' }</h3>
