@@ -19,7 +19,7 @@ Desafio feito para empresa Coopers para vaga de Dev. Full Stack.
 Esse diretório está toda aplicação do backend, aqui foi usado node, express, nodemon... para chamar o banco de dados e fazer a parte do CRUD.
 
 ### /frontend:
-Esse diretório está toda aplicação do frontend, aqui foi usado Next.js, aqui está os componentes, Redux, SCSS, enfim toda parte do front.
+Esse diretório está toda aplicação do frontend, aqui foi usado Next.js, aqui está os componentes, os store do Redux, SCSS, enfim toda parte do front...
 
 ## Instalar e rodar:
 
