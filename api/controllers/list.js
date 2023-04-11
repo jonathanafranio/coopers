@@ -37,7 +37,7 @@ export const editItem = (req, res) => {
         return res.status(401).json({ status: 401, erro: 'Uninformed id.' })
     }
 
-    const q = `UPDATE list_itens SET checked = '${req.body.checked}' WHERE id = '${req.params.id}';`;
+    const q = `UPDATE list_itens SET checked = ${req.body.checked} WHERE id = '${req.params.id}';`;
     db.query(q, (err, data) => {
         if(err) return res.json(err);
         return res.status(200).json({ status: 200, data })

@@ -41,6 +41,38 @@ const SectionToDo = (props) => {
                 console.log(`erro ao requisitar a remoção de [${remove.join(', ')}]: `, e);
             })
     }
+
+    const editItem = (id_list, id, item_checked) => {
+        if(!user) return;
+        if(!id_list) return;
+        if(!id) return;
+
+        const checked = item_checked ? 1 : 0;
+
+        //console.log({ id_list, id, item_checked, checked })
+        //return;
+
+        let myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+        const requestOptions = {
+            method: 'PUT',
+            headers: myHeaders,
+            body: JSON.stringify({ checked })
+        };
+        fetch(`http://localhost:8800/list/${id}`, requestOptions)
+            .then(r => r.json())
+            .then(result => {
+                console.log({ result });
+                let list_edit = id_list == 1 ? first_list : second_list;
+                const index_list = list_edit.findIndex((item) => item.id == id)
+                list_edit[index_list].checked = item_checked
+
+                id_list == 1 ? dispatch(editList1(list_edit)) : dispatch(editList2(list_edit))
+            })
+            .catch(e =>{
+                console.log(`erro ao requisitar a edição de [${id}]: `, e);
+            })
+    }
     
     return (
         <section id="to-do" className="to-do">
@@ -56,8 +88,18 @@ const SectionToDo = (props) => {
             ) : false }
 
             <div className="to-do__container">               
-                <ToDo id_list={ 1 } user={ user } removeFn={ removeItem } list={ first_list } />
-                <ToDo id_list={ 2 } user={ user } removeFn={ removeItem } list={ second_list } />
+                <ToDo 
+                    id_list={ 1 } 
+                    user={ user } 
+                    removeFn={ removeItem } 
+                    editFn={ editItem } 
+                    list={ first_list } />
+                <ToDo 
+                    id_list={ 2 } 
+                    user={ user } 
+                    removeFn={ removeItem } 
+                    editFn={ editItem } 
+                    list={ second_list } />
             </div>
         </section>
     )

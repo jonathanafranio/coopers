@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import ModalAdd from "./ModalAdd";
 
 const ToDo = (props) => {
-    const { list, id_list, user, removeFn } = props;
+    const { list, id_list, user, removeFn, editFn } = props;
     
     const [completeList, setCompleteList] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
@@ -16,8 +16,6 @@ const ToDo = (props) => {
     const addNew = (e) => {
         e.preventDefault();
         if(!user) return;
-
-        console.log({ user })
 
         setModalAdd(true);
         
@@ -49,6 +47,7 @@ const ToDo = (props) => {
                 <li className="to-do__li">
                     <a href="#" className="to-do__add" onClick={ e => addNew(e) }>add a new task</a>
                 </li>
+                { /* const editItem = (id_list, id, item_checked) => { */ }
                 { list.map( (item: any) => (
                     <li key={ item.id } className="to-do__li">
                         <input 
@@ -56,7 +55,7 @@ const ToDo = (props) => {
                             value={ item.checked } 
                             defaultChecked={ item.checked } 
                             id={ item.id } 
-                            onClick={ e => alert(e.target.value) } />
+                            onClick={ e => editFn(id_list, item.id, e.target.checked) } />
 
                         <label htmlFor={ item.id } className="to-do__label">
                             <span>{ item.description }</span>
