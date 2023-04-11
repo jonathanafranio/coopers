@@ -31,3 +31,31 @@ export const addList = (req, res) => {
 
     })
 }
+
+export const editItem = (req, res) => {
+    if(!req.params.id) {
+        return res.status(401).json({ status: 401, erro: 'Uninformed id.' })
+    }
+
+    const q = `UPDATE list_itens SET checked = '${req.body.checked}' WHERE id = '${req.params.id}';`;
+    db.query(q, (err, data) => {
+        if(err) return res.json(err);
+        return res.status(200).json({ status: 200, data })
+    })
+}
+
+export const removeItem = (req, res) => {
+    const { remove } = req.body
+    if(!remove) {
+        return res.status(401).json({ status: 401, erro: 'List 404' });
+    }
+    if(!Array.isArray(remove)) {
+        return res.status(401).json({ status: 401, erro: 'List 404' });
+    }
+
+    const q = `DELETE FROM list_itens WHERE id IN (${ remove.join(', ') });`;
+    db.query(q, (err, data) => {
+        if(err) return res.json(err);
+        return res.status(200).json({ status: 200, data })
+    })
+}
