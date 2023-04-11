@@ -14,14 +14,14 @@ export const editList2 = (list: []) => {
     }
 }
 
-export const clearList1 = (list: []) => {
+export const clearList1 = () => {
     localStorage.removeItem("list_1");
     return {
         type: 'CLEAR_LIST1',
     }
 }
 
-export const clearList2 = (list: []) => {
+export const clearList2 = () => {
     localStorage.removeItem("list_2");
     return {
         type: 'CLEAR_LIST2',

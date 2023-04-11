@@ -4,7 +4,7 @@ import ModalAdd from "./ModalAdd";
 import ModalRmItem from "./ModalRmItem";
 import ModalRmAll from "./ModalRmAll";
 
-const ToDo = (props) => {
+const ToDo = (props: any) => {
     const { list, id_list, user, removeFn, editFn } = props;
     
     const [completeList, setCompleteList] = useState(false);

@@ -1,4 +1,4 @@
-const ModalRmAll = (props) => {
+const ModalRmAll = (props: any) => {
     const { confirm_remove, close_fun } = props
 
     return (
