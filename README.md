@@ -5,13 +5,13 @@ Desafio feito para empresa Coopers para vaga de Dev. Full Stack.
 ## Links com descrição dos quesitos e Figma:
 
 - [Figma](https://www.figma.com/file/OAMrciHo0uOf4H2cgg3MDm/Coopers---Site-para-teste-Front-End-%2F-Full-Stack?node-id=290-6333&t=Gohw7suIrSgofVjh-0);
-- [O que esperam](https://github.com/CoopersDigitalProduction/full-stack-test/#readme);
+- [O que esperam do desafio](https://github.com/CoopersDigitalProduction/full-stack-test/#readme);
 
 
 ## O que feito:
 
 - Desenvolvimento front-end do layout do link do Figma acima;
-- Desenvolvimento das funcionalidades para cadastro e login de usuários e to-do list utilizando React e Node.js.
+- Desenvolvimento das funcionalidades para cadastro e login de usuários e um CRUD to-do list utilizando React e Node.js.
 
 ## Diretórios:
 
