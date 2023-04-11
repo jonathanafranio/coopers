@@ -16,9 +16,12 @@ const ToDo = (props) => {
     const addNew = (e) => {
         e.preventDefault();
         if(!user) return;
-
         setModalAdd(true);
-        
+    }
+
+    const removeAll = () => {
+        const list_map = list.map(item => item.id)
+        removeFn(id_list, list_map)
     }
 
     useEffect(() => {
@@ -59,13 +62,12 @@ const ToDo = (props) => {
                         <label htmlFor={ item.id } className="to-do__label">
                             <span>{ item.description }</span>
                         </label>
-                        { /* removeItem = (id_list, remove)  */ }
                         <button className="to-do__del" onClick={ _ => removeFn(id_list, [item.id]) }>delete</button>
                     </li>
                 ) ) }
             </ul>
 
-            <button className="to-do__earse-all">erase all</button>
+            <button className="to-do__earse-all" onClick={ _ => removeAll() }>erase all</button>
             
             { modalAdd ? (<ModalAdd list_id={ id_list } user={ user.id } close_fun={ setModalAdd } />) : false }
 
