@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react"
 
 import ModalAdd from "./ModalAdd";
+import ModalRm from "./ModalRm";
 
 const ToDo = (props) => {
     const { list, id_list, user, removeFn, editFn } = props;
     
     const [completeList, setCompleteList] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
+    const [propsRemove, setPropsRemove] = useState(null)
     
     const isComplete = () => {
         const list_complete = list.length > 0 ? list.every((item) => item.checked) : false;
@@ -20,8 +22,14 @@ const ToDo = (props) => {
     }
 
     const removeAll = () => {
+        if(!user) return;
         const list_map = list.map(item => item.id)
         removeFn(id_list, list_map)
+    }
+
+    const confirm_remove = (id_list, list_map) => {
+        removeFn(id_list, list_map)
+        setPropsRemove(null)
     }
 
     useEffect(() => {
@@ -62,7 +70,7 @@ const ToDo = (props) => {
                         <label htmlFor={ item.id } className="to-do__label">
                             <span>{ item.description }</span>
                         </label>
-                        <button className="to-do__del" onClick={ _ => removeFn(id_list, [item.id]) }>delete</button>
+                        <button className="to-do__del" onClick={ _ => setPropsRemove(item) }>delete</button>
                     </li>
                 ) ) }
             </ul>
@@ -70,6 +78,14 @@ const ToDo = (props) => {
             <button className="to-do__earse-all" onClick={ _ => removeAll() }>erase all</button>
             
             { modalAdd ? (<ModalAdd list_id={ id_list } user={ user.id } close_fun={ setModalAdd } />) : false }
+
+            { propsRemove ? (
+                <ModalRm 
+                    list_id={ id_list } 
+                    item={ propsRemove } 
+                    confirm_remove={ confirm_remove } 
+                    close_fun={ setPropsRemove } />
+            ) : false }
 
         </div>
     )
