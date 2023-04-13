@@ -13,4 +13,6 @@ app.use('/users', userRoutes);
 app.use('/login', loginRoutes);
 app.use('/list', listRoutes);
 
-app.listen(8800);
+const port = process.env.PORT || 8800;
+
+app.listen(port);
