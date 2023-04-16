@@ -24,6 +24,9 @@ Esse diretório está toda aplicação do frontend, aqui foi usado Next.js, aqui
 ## Instalar e rodar:
 
 ### /api
+
+Antes de instalar as dependências no Node, configura os dados de acesso ao banco de dados, renomeie o arquivo `.env.exemple` para `.env` e adicione as informações do banco de dados.
+
 ```bash
 # Instalar dependências do backend
 $ npm install
