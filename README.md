@@ -46,4 +46,4 @@ $ npm run dev
 ```
 
 ## Estrutura de Banco de Dados:
-O arquivo: `crud_coopers.sql` na raiz do projeto é a estrutura das tabelas no Mysql, só criar um banco novo no MySql e importar esse arquivo para o banco e depois editar as credenciais do banco no arquivo: `/api/db.js`;
+O arquivo: `crud_coopers.sql` na raiz do projeto é a estrutura das tabelas no Mysql, só criar um banco novo no MySql e importar esse arquivo para o banco e depois vai no diretório `/api`, renomeie o arquivo `.env.exemple` para `.env` e adicione as informações do banco de dados.
