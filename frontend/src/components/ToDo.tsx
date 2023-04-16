@@ -13,7 +13,7 @@ const ToDo = (props: any) => {
     const [rmmAll, setRmmAll] = useState(false);
     
     const isComplete = () => {
-        const list_complete = list.length > 0 ? list.every((item) => item.checked) : false;
+        const list_complete = list && list.length > 0 ? list.every((item) => item.checked) : false;
         setCompleteList(list_complete);
     }
 
@@ -63,21 +63,24 @@ const ToDo = (props: any) => {
                 <li className="to-do__li">
                     <a href="#" className="to-do__add" onClick={ e => addNew(e) }>add a new task</a>
                 </li>
-                { list.map( (item: any) => (
-                    <li key={ item.id } className="to-do__li">
-                        <input 
-                            type="checkbox" 
-                            value={ item.checked } 
-                            defaultChecked={ item.checked } 
-                            id={ item.id } 
-                            onClick={ e => editFn(id_list, item.id, e.target.checked) } />
 
-                        <label htmlFor={ item.id } className="to-do__label">
-                            <span>{ item.description }</span>
-                        </label>
-                        <button className="to-do__del" onClick={ _ => setPropsRemove(item) }>delete</button>
-                    </li>
-                ) ) }
+                { list ? (
+                    list.map( (item: any) => (
+                        <li key={ item.id } className="to-do__li">
+                            <input 
+                                type="checkbox" 
+                                value={ item.checked } 
+                                defaultChecked={ item.checked } 
+                                id={ item.id } 
+                                onClick={ e => editFn(id_list, item.id, e.target.checked) } />
+    
+                            <label htmlFor={ item.id } className="to-do__label">
+                                <span>{ item.description }</span>
+                            </label>
+                            <button className="to-do__del" onClick={ _ => setPropsRemove(item) }>delete</button>
+                        </li>
+                    ) )
+                ) : false }
             </ul>
 
             <button className="to-do__earse-all" onClick={ _ => setRmmAll(true) }>erase all</button>

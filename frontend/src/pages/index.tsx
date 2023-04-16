@@ -160,8 +160,6 @@ export default function Home() {
                 <SectionToDo 
                     title={ toDo_txt.title } 
                     description={ toDo_txt.description } 
-                    first_list={ firstToDo } 
-                    second_list={ lastTodo }
                     login={ login } />
 
                 { loading ? ( <Preload /> ) : false }
